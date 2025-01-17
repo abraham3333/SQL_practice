@@ -32,14 +32,14 @@ select
     -- Employees are classified based on the following criteria:
     case 
         -- If the employee worked more than 8 hours on at least 3 days AND more than 10 hours on at least 2 days, classify as 'both'.
-        when days_8 > 3 and days_10 > 2 then 'both'
+        when days_8 ≥ 3 and days_10 ≥ 2 then 'both'
         -- If the employee worked more than 8 hours on at least 3 days, classify as '1'.
-        when days_8 > 3 then '1'
+        when days_8 ≥ 3 then '1'
         -- In all other cases, classify as '2'.
         else '2' 
     end as criteria
 from time_window
 -- Only include employees who worked more than 8 hours on at least 3 days OR more than 10 hours on at least 2 days.
-where days_8 > 3 or days_10 > 2
+where days_8 ≥ 3 or days_10 ≥ 2
 -- Sort the output by employee ID.
 order by emp_id ASC;
